@@ -63,15 +63,6 @@ def integrate_adaptive_class(fun,x0,x1,tol):
     right=integrate_adaptive(fun,xmid,x1,tol/2)
     return left+right
 
-if False:
-    ans=integrate_adaptive(np.exp,x0,x1,1e-7)
-    print(ans-(np.exp(x1)-np.exp(x0)))
-else:
-    ans=integrate_adaptive(lorentz,x0,x1,1e-7)
-    print(ans-(np.arctan(x1)-np.arctan(x0)))
-
-
-
 
 #count1 and count2 are to track how many function calls are required for both
 #my own adapative integrator and the one done in class, respectively. 
