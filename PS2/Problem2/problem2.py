@@ -1,6 +1,3 @@
-"""
-Problem 2
-"""
 
 import numpy as np
 def lorentz(x):
@@ -26,7 +23,7 @@ def integrate_adaptive(fun,a,b,tol,extra=None):
         return left+right
     
     else:
-      count1 += 2
+      #count1 += 2
       x=np.array([a+0.5*(extra[3]),b-0.5*extra[3]])
       y=fun(x)
       dx=extra[3]/2
@@ -46,7 +43,7 @@ def integrate_adaptive(fun,a,b,tol,extra=None):
 
 #Below is the integrator function done in class.
 def integrate_adaptive_class(fun,x0,x1,tol):
-  print('integrating between ',x0,x1)
+  #print('integrating between ',x0,x1)
   #hardwire to use simpsons
   x=np.linspace(x0,x1,5)
   y=fun(x)
@@ -57,11 +54,15 @@ def integrate_adaptive_class(fun,x0,x1,tol):
   if err<tol:
     return area2
   else:
-    count1+=2
+    #count1+=2
     xmid=(x0+x1)/2
     left=integrate_adaptive(fun,x0,xmid,tol/2)
     right=integrate_adaptive(fun,xmid,x1,tol/2)
     return left+right
+
+
+
+
 
 
 #count1 and count2 are to track how many function calls are required for both
@@ -69,13 +70,14 @@ def integrate_adaptive_class(fun,x0,x1,tol):
 count1=0
 count2=0
 
-integrate_adaptive(np.exp,-10,10,1e-7,None)
-integrate_adaptive_class(np.exp,-5,5,1e-7)
+print('my adaptive integration result', integrate_adaptive(np.exp,-10,10,1e-7,None))
+print('class adapative integration result',integrate_adaptive_class(np.exp,-10,10,1e-7))
 
 #print(count1,count2)
 
-""" For some reason my counters were not working, so I couldn't numerically show
-how many function calls I save. However, knowing that I only need to evaluate
-the function at 2 points instead of 5, I speculate that the number of function 
-calls for my function is approximately 2/5 of the number of function calls made
-with the code written in class. """
+##For some reason my counters were not working, so I couldn't numerically show
+##how many function calls I save. However, knowing that I only need to evaluate
+##the function at 2 points instead of 5, I speculate that the number of function 
+##calls for my function is approximately 2/5 of the number of function calls made
+##with the code written in class. """
+
